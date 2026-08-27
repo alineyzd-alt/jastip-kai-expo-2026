@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jastip KAI Expo 2026 by Alin</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #f4f7f6;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+        }
+        .header h1 {
+            font-size: 1.4rem;
+            color: #00529c;
+        }
+        .header p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #00529c;
+        }
+        button {
+            width: 100%;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #1eb854;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>jastip kai expo 2026 by Alin</h1>
+        <p>Instagram/TikTok: @alineyzd</p>
+    </div>
+
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="noWaAdmin">Nomor WhatsApp Kamu (Admin):</label>
+            <input type="tel" id="noWaAdmin" placeholder="Contoh: 628123456789" required>
+        </div>
+
+        <hr style="margin: 20px 0; border: none; border-top: 1px dashed #ccc;">
+
+        <div class="form-group">
+            <label for="nama">Nama Pemesan (Sesuai KTP):</label>
+            <input type="text" id="nama" required>
+        </div>
+
+        <div class="form-group">
+            <label for="nik">NIK / No. KTP:</label>
+            <input type="number" id="nik" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hp">No. WhatsApp Pemesan:</label>
+            <input type="tel" id="hp" required>
+        </div>
+
+        <div class="form-group">
+            <label for="kereta">Nama Kereta & Kelas:</label>
+            <input type="text" id="kereta" placeholder="Contoh: Argo Bromo Anggrek (Eksklusif/Eksekutif)" required>
+        </div>
+
+        <div class="form-group">
+            <label for="rute">Rute (Stasiun Asal -> Stasiun Tujuan):</label>
+            <input type="text" id="rute" placeholder="Contoh: Gambir -> Surabaya Pasarturi" required>
+        </div>
+
+        <div class="form-group">
+            <label for="tanggal">Tanggal Keberangkatan:</label>
+            <input type="date" id="tanggal" required>
+        </div>
+
+        <div class="form-group">
+            <label for="jam">Perkiraan Jam Keberangkatan / Jam Ideal:</label>
+            <input type="text" id="jam" placeholder="Contoh: Pagi (around 08.00) atau Bebas">
+        </div>
+
+        <div class="form-group">
+            <label for="catatan">Catatan Tambahan (Opsi Kursi / Kereta Cadangan):</label>
+            <textarea id="catatan" rows="3" placeholder="Contoh: Jika Argo Bromo habis, boleh ganti ke Sembrani. Prefer dekat jendela."></textarea>
+        </div>
+
+        <button type="button" onclick="sendToWhatsapp()">Kirim Form via WhatsApp</button>
+    </form>
+</div>
+
+<script>
+    function sendToWhatsapp() {
+        const adminWa = document.getElementById('noWaAdmin').value.trim();
+        const nama = document.getElementById('nama').value.trim();
+        const nik = document.getElementById('nik').value.trim();
+        const hp = document.getElementById('hp').value.trim();
+        const kereta = document.getElementById('kereta').value.trim();
+        const rute = document.getElementById('rute').value.trim();
+        const tanggal = document.getElementById('tanggal').value.trim();
+        const jam = document.getElementById('jam').value.trim();
+        const catatan = document.getElementById('catatan').value.trim();
+
+        if (!adminWa || !nama || !nik || !hp || !kereta || !rute || !tanggal) {
+            alert('Mohon lengkapi semua data formulir terlebih dahulu!');
+            return;
+        }
+
+        const message = `Halo Kak Alin (@alineyzd), saya mau pesan jastip tiket KAI Expo 2026.%0A%0A` +
+            `*Data Pemesan:*%0A` +
+            `- Nama: ${nama}%0A` +
+            `- NIK: ${nik}%0A` +
+            `- No HP/WA: ${hp}%0A%0A` +
+            `*Detail Tiket:*%0A` +
+            `- Kereta & Kelas: ${kereta}%0A` +
+            `- Rute: ${rute}%0A` +
+            `- Tanggal: ${tanggal}%0A` +
+            `- Jam Ideal: ${jam}%0A` +
+            `- Catatan Cadangan: ${catatan}`;
+
+        const whatsappUrl = `https://wa.me/${adminWa}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
+</body>
+</html>
