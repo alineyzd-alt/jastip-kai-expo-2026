@@ -6,22 +6,95 @@
     <title>JASTIP KAI EXPO 2026 BY ALIN</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
-        body { background-color: #f4f7f6; padding: 20px; color: #333; }
-        .container { max-width: 650px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        .header h1 { font-size: 1.4rem; color: #00529c; text-transform: uppercase; font-weight: 800; }
-        .header p { color: #666; font-size: 0.9rem; margin-top: 5px; }
-        .section-title { font-weight: bold; font-size: 1.05rem; color: #00529c; margin: 20px 0 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        body { background-color: #f0f4f8; padding: 20px; color: #222; }
+        .container { 
+            max-width: 650px; 
+            margin: 0 auto; 
+            background: #ffffff; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+            border-top: 6px solid #F47A20; 
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 25px; 
+            background: linear-gradient(135deg, #1F4E9D 0%, #0d3478 100%);
+            padding: 20px 15px;
+            border-radius: 8px;
+            color: #ffffff;
+        }
+        .header h1 { 
+            font-size: 1.4rem; 
+            color: #ffffff; 
+            text-transform: uppercase; 
+            font-weight: 800; 
+            letter-spacing: 0.5px;
+        }
+        .header p { 
+            color: #FFD1A6; 
+            font-size: 0.95rem; 
+            margin-top: 6px; 
+            font-weight: 600;
+        }
+        .section-title { 
+            font-weight: 700; 
+            font-size: 1.05rem; 
+            color: #1F4E9D; 
+            margin: 25px 0 12px; 
+            border-bottom: 2px solid #F47A20; 
+            padding-bottom: 5px; 
+            display: flex;
+            align-items: center;
+        }
         .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.88rem; }
-        input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: #00529c; }
-        .passenger-box { background: #f9f9f9; padding: 12px; border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 12px; }
-        .passenger-box h4 { font-size: 0.9rem; margin-bottom: 8px; color: #444; }
+        label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.88rem; color: #333; }
+        input, select, textarea { 
+            width: 100%; 
+            padding: 11px 13px; 
+            border: 1.5 solid #ccc; 
+            border-radius: 6px; 
+            font-size: 0.95rem; 
+            background-color: #fbfbfb;
+            transition: all 0.2s ease;
+        }
+        input:focus, select:focus, textarea:focus { 
+            outline: none; 
+            border-color: #1F4E9D; 
+            background-color: #ffffff;
+            box-shadow: 0 0 5px rgba(31, 78, 157, 0.3);
+        }
+        .passenger-box { 
+            background: #f7f9fc; 
+            padding: 14px; 
+            border: 1px solid #dce4ed; 
+            border-left: 4px solid #1F4E9D;
+            border-radius: 6px; 
+            margin-bottom: 12px; 
+        }
+        .passenger-box h4 { font-size: 0.9rem; margin-bottom: 8px; color: #1F4E9D; font-weight: 700; }
         .row { display: flex; gap: 10px; }
         .row .form-group { flex: 1; }
-        button { width: 100%; background-color: #25D366; color: white; border: none; padding: 14px; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 15px; transition: background 0.3s; }
-        button:hover { background-color: #1eb854; }
+        button { 
+            width: 100%; 
+            background: linear-gradient(135deg, #F47A20 0%, #d8620e 100%);
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            font-size: 1.05rem; 
+            font-weight: bold; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-top: 20px; 
+            transition: transform 0.1s ease, background 0.3s;
+            box-shadow: 0 4px 10px rgba(244, 122, 32, 0.3);
+        }
+        button:hover { 
+            background: linear-gradient(135deg, #e06915 0%, #bf5206 100%);
+        }
+        button:active {
+            transform: scale(0.99);
+        }
     </style>
 </head>
 <body>
@@ -70,9 +143,19 @@
         </div>
 
         <!-- Kereta Pergi -->
-        <div class="form-group">
-            <label for="keretaPergi">Nama Kereta & Kelas (Pergi):</label>
-            <input type="text" id="keretaPergi" placeholder="Contoh: Argo Bromo Anggrek (Eksekutif)" required>
+        <div class="row">
+            <div class="form-group">
+                <label for="keretaPergi">Nama Kereta (Pergi):</label>
+                <input type="text" id="keretaPergi" placeholder="Contoh: Argo Bromo Anggrek" required>
+            </div>
+            <div class="form-group">
+                <label for="kelasPergi">Kelas Kereta (Pergi):</label>
+                <select id="kelasPergi" required>
+                    <option value="Ekonomi">Ekonomi</option>
+                    <option value="Eksekutif">Eksekutif</option>
+                    <option value="Panoramic">Panoramic</option>
+                </select>
+            </div>
         </div>
         <div class="row">
             <div class="form-group">
@@ -87,10 +170,20 @@
 
         <!-- Kereta Pulang (Opsional PP) -->
         <div id="sectionPulang" style="display: none;">
-            <hr style="margin: 15px 0; border: none; border-top: 1px dashed #ccc;">
-            <div class="form-group">
-                <label for="keretaPulang">Nama Kereta & Kelas (Pulang):</label>
-                <input type="text" id="keretaPulang" placeholder="Contoh: Sembrani (Eksekutif)">
+            <hr style="margin: 15px 0; border: none; border-top: 1px dashed #bbb;">
+            <div class="row">
+                <div class="form-group">
+                    <label for="keretaPulang">Nama Kereta (Pulang):</label>
+                    <input type="text" id="keretaPulang" placeholder="Contoh: Sembrani">
+                </div>
+                <div class="form-group">
+                    <label for="kelasPulang">Kelas Kereta (Pulang):</label>
+                    <select id="kelasPulang">
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Eksekutif">Eksekutif</option>
+                        <option value="Panoramic">Panoramic</option>
+                    </select>
+                </div>
             </div>
             <div class="row">
                 <div class="form-group">
@@ -113,7 +206,7 @@
                 <option value="Kursi C (Samping Lorong / Tengah)">Kursi C</option>
                 <option value="Kursi D (Samping Jendela)">Kursi D (Samping Jendela)</option>
             </select>
-            <small style="color: #777; font-size: 0.75rem;">*Nomor baris kursi tidak bisa diminta (ditentukan oleh sistem KAI/Expo).</small>
+            <small style="color: #666; font-size: 0.75rem;">*Nomor baris kursi tidak bisa diminta (ditentukan oleh sistem KAI/Expo).</small>
         </div>
 
         <div class="section-title">3. Data Penumpang (Maksimal 4 NIK)</div>
@@ -202,10 +295,12 @@
         const stasiunTujuan = document.getElementById('stasiunTujuan').value.trim();
         
         const keretaPergi = document.getElementById('keretaPergi').value.trim();
+        const kelasPergi = document.getElementById('kelasPergi').value;
         const tglPergi = document.getElementById('tglPergi').value.trim();
         const jamPergi = document.getElementById('jamPergi').value.trim();
         
         const keretaPulang = document.getElementById('keretaPulang').value.trim();
+        const kelasPulang = document.getElementById('kelasPulang').value;
         const tglPulang = document.getElementById('tglPulang').value.trim();
         const jamPulang = document.getElementById('jamPulang').value.trim();
         
@@ -235,13 +330,13 @@
         let pesanPerjalanan = `*Tipe Perjalanan:* ${tipe}%0A` +
             `*Rute:* ${stasiunAsal} ➡️ ${stasiunTujuan}%0A%0A` +
             `*Detail Pergi:*%0A` +
-            `- Kereta: ${keretaPergi}%0A` +
+            `- Kereta: ${keretaPergi} (${kelasPergi})%0A` +
             `- Tanggal: ${tglPergi}%0A` +
             `- Jam: ${jamPergi}%0A`;
 
         if (tipe === 'Pulang Pergi (PP)') {
             pesanPerjalanan += `%0A*Detail Pulang:*%0A` +
-                `- Kereta: ${keretaPulang || '-'}%0A` +
+                `- Kereta: ${keretaPulang || '-'} (${kelasPulang})%0A` +
                 `- Tanggal: ${tglPulang || '-'}%0A` +
                 `- Jam: ${jamPulang || '-'}%0A`;
         }
