@@ -58,36 +58,53 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="rute">Rute (Stasiun Asal -> Stasiun Tujuan):</label>
-            <input type="text" id="rute" placeholder="Contoh: Gambir -> Surabaya Pasarturi" required>
-        </div>
-
         <div class="row">
             <div class="form-group">
-                <label for="keretaPergi">Kereta & Kelas (Pergi):</label>
-                <input type="text" id="keretaPergi" placeholder="Argo Bromo (Eksekutif)" required>
+                <label for="stasiunAsal">Stasiun Asal:</label>
+                <input type="text" id="stasiunAsal" placeholder="Contoh: Gambir" required>
             </div>
+            <div class="form-group">
+                <label for="stasiunTujuan">Stasiun Akhir / Tujuan:</label>
+                <input type="text" id="stasiunTujuan" placeholder="Contoh: Surabaya Pasarturi" required>
+            </div>
+        </div>
+
+        <!-- Kereta Pergi -->
+        <div class="form-group">
+            <label for="keretaPergi">Nama Kereta & Kelas (Pergi):</label>
+            <input type="text" id="keretaPergi" placeholder="Contoh: Argo Bromo Anggrek (Eksekutif)" required>
+        </div>
+        <div class="row">
             <div class="form-group">
                 <label for="tglPergi">Tanggal Keberangkatan:</label>
                 <input type="date" id="tglPergi" required>
             </div>
+            <div class="form-group">
+                <label for="jamPergi">Jam Keberangkatan (Pergi):</label>
+                <input type="text" id="jamPergi" placeholder="Contoh: 08:20 / Pagi" required>
+            </div>
         </div>
 
+        <!-- Kereta Pulang (Opsional PP) -->
         <div id="sectionPulang" style="display: none;">
+            <hr style="margin: 15px 0; border: none; border-top: 1px dashed #ccc;">
+            <div class="form-group">
+                <label for="keretaPulang">Nama Kereta & Kelas (Pulang):</label>
+                <input type="text" id="keretaPulang" placeholder="Contoh: Sembrani (Eksekutif)">
+            </div>
             <div class="row">
-                <div class="form-group">
-                    <label for="keretaPulang">Kereta & Kelas (Pulang):</label>
-                    <input type="text" id="keretaPulang" placeholder="Sembrani (Eksekutif)">
-                </div>
                 <div class="form-group">
                     <label for="tglPulang">Tanggal Kepulangan:</label>
                     <input type="date" id="tglPulang">
                 </div>
+                <div class="form-group">
+                    <label for="jamPulang">Jam Keberangkatan (Pulang):</label>
+                    <input type="text" id="jamPulang" placeholder="Contoh: 19:30 / Malam">
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group" style="margin-top: 15px;">
             <label for="requestSeat">Request Posisi Kursi (Pilih Salah Satu):</label>
             <select id="requestSeat">
                 <option value="Bebas / Random">Bebas / Bebas Mana Saja</option>
@@ -174,23 +191,29 @@
     }
 
     function sendToWhatsapp() {
-        // Nomor Admin Terkunci
         const adminWa = "6285134519443";
         
         const namaPemesan = document.getElementById('namaPemesan').value.trim();
         const hp = document.getElementById('hp').value.trim();
         const email = document.getElementById('email').value.trim();
         const tipe = document.getElementById('jenisTipe').value;
-        const rute = document.getElementById('rute').value.trim();
+        
+        const stasiunAsal = document.getElementById('stasiunAsal').value.trim();
+        const stasiunTujuan = document.getElementById('stasiunTujuan').value.trim();
+        
         const keretaPergi = document.getElementById('keretaPergi').value.trim();
         const tglPergi = document.getElementById('tglPergi').value.trim();
+        const jamPergi = document.getElementById('jamPergi').value.trim();
+        
         const keretaPulang = document.getElementById('keretaPulang').value.trim();
         const tglPulang = document.getElementById('tglPulang').value.trim();
+        const jamPulang = document.getElementById('jamPulang').value.trim();
+        
         const requestSeat = document.getElementById('requestSeat').value;
         const catatan = document.getElementById('catatan').value.trim();
 
-        if (!namaPemesan || !hp || !email || !rute || !keretaPergi || !tglPergi) {
-            alert('Mohon lengkapi data kontak pemesan, rute, dan tanggal pergi!');
+        if (!namaPemesan || !hp || !email || !stasiunAsal || !stasiunTujuan || !keretaPergi || !tglPergi || !jamPergi) {
+            alert('Mohon lengkapi data pemesan, rute stasiun, serta detail keberangkatan!');
             return;
         }
 
@@ -210,11 +233,17 @@
         }
 
         let pesanPerjalanan = `*Tipe Perjalanan:* ${tipe}%0A` +
-            `*Rute:* ${rute}%0A` +
-            `*Kereta Pergi:* ${keretaPergi} (${tglPergi})%0A`;
+            `*Rute:* ${stasiunAsal} ➡️ ${stasiunTujuan}%0A%0A` +
+            `*Detail Pergi:*%0A` +
+            `- Kereta: ${keretaPergi}%0A` +
+            `- Tanggal: ${tglPergi}%0A` +
+            `- Jam: ${jamPergi}%0A`;
 
         if (tipe === 'Pulang Pergi (PP)') {
-            pesanPerjalanan += `*Kereta Pulang:* ${keretaPulang || '-'} (${tglPulang || '-'})%0A`;
+            pesanPerjalanan += `%0A*Detail Pulang:*%0A` +
+                `- Kereta: ${keretaPulang || '-'}%0A` +
+                `- Tanggal: ${tglPulang || '-'}%0A` +
+                `- Jam: ${jamPulang || '-'}%0A`;
         }
 
         const message = `Halo Kak Alin (@alineyzd), saya mau order jastip tiket KAI Expo 2026.%0A%0A` +
@@ -222,7 +251,7 @@
             `- Nama: ${namaPemesan}%0A` +
             `- No WA: ${hp}%0A` +
             `- Email: ${email}%0A%0A` +
-            pesanPerjalanan +
+            pesanPerjalanan + `%0A` +
             `*Request Posisi Kursi:* ${requestSeat}%0A%0A` +
             `*Data Penumpang:*%0A${dataPenumpang}%0A` +
             `*Catatan Cadangan:* ${catatan || '-'}`;
