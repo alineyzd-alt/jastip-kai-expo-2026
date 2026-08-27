@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jastip KAI Expo 2026 by Alin</title>
+    <title>JASTIP KAI EXPO 2026 BY ALIN</title>
     <style>
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
         body { background-color: #f4f7f6; padding: 20px; color: #333; }
         .container { max-width: 650px; margin: 0 auto; background: #ffffff; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
-        .header h1 { font-size: 1.4rem; color: #00529c; text-transform: lowercase; }
+        .header h1 { font-size: 1.4rem; color: #00529c; text-transform: uppercase; font-weight: 800; }
         .header p { color: #666; font-size: 0.9rem; margin-top: 5px; }
         .section-title { font-weight: bold; font-size: 1.05rem; color: #00529c; margin: 20px 0 10px; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
         .form-group { margin-bottom: 15px; }
@@ -28,20 +28,25 @@
 
 <div class="container">
     <div class="header">
-        <h1>jastip kai expo 2026 by Alin</h1>
-        <p>Instagram / TikTok: @alineyzd</p>
+        <h1>JASTIP KAI EXPO 2026 BY ALIN</h1>
+        <p>X: @alineyzd</p>
     </div>
 
     <form id="bookingForm">
-        <div class="form-group">
-            <label for="noWaAdmin">Nomor WhatsApp Admin (Alin):</label>
-            <input type="tel" id="noWaAdmin" placeholder="Contoh: 628123456789" required>
-        </div>
-
         <div class="section-title">1. Kontak Pemesan Utama</div>
         <div class="form-group">
-            <label for="hp">No. WhatsApp Pemesan (Aktif):</label>
-            <input type="tel" id="hp" placeholder="Contoh: 08123456789" required>
+            <label for="namaPemesan">Nama Pemesan Utama:</label>
+            <input type="text" id="namaPemesan" placeholder="Contoh: Alin" required>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for="hp">No. WhatsApp (Aktif):</label>
+                <input type="tel" id="hp" placeholder="Contoh: 08123456789" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Alamat Email:</label>
+                <input type="email" id="email" placeholder="contoh@gmail.com" required>
+            </div>
         </div>
 
         <div class="section-title">2. Detail Perjalanan</div>
@@ -96,6 +101,7 @@
 
         <div class="section-title">3. Data Penumpang (Maksimal 4 NIK)</div>
         
+        <!-- Penumpang 1 -->
         <div class="passenger-box">
             <h4>Penumpang 1 (Wajib)</h4>
             <div class="row">
@@ -108,6 +114,7 @@
             </div>
         </div>
 
+        <!-- Penumpang 2 -->
         <div class="passenger-box">
             <h4>Penumpang 2 (Opsional)</h4>
             <div class="row">
@@ -120,6 +127,7 @@
             </div>
         </div>
 
+        <!-- Penumpang 3 -->
         <div class="passenger-box">
             <h4>Penumpang 3 (Opsional)</h4>
             <div class="row">
@@ -132,6 +140,7 @@
             </div>
         </div>
 
+        <!-- Penumpang 4 -->
         <div class="passenger-box">
             <h4>Penumpang 4 (Opsional)</h4>
             <div class="row">
@@ -165,8 +174,12 @@
     }
 
     function sendToWhatsapp() {
-        const adminWa = document.getElementById('noWaAdmin').value.trim();
+        // Nomor Admin Terkunci
+        const adminWa = "6285134519443";
+        
+        const namaPemesan = document.getElementById('namaPemesan').value.trim();
         const hp = document.getElementById('hp').value.trim();
+        const email = document.getElementById('email').value.trim();
         const tipe = document.getElementById('jenisTipe').value;
         const rute = document.getElementById('rute').value.trim();
         const keretaPergi = document.getElementById('keretaPergi').value.trim();
@@ -176,8 +189,8 @@
         const requestSeat = document.getElementById('requestSeat').value;
         const catatan = document.getElementById('catatan').value.trim();
 
-        if (!adminWa || !hp || !rute || !keretaPergi || !tglPergi) {
-            alert('Mohon lengkapi data rute, tanggal pergi, dan nomor WhatsApp!');
+        if (!namaPemesan || !hp || !email || !rute || !keretaPergi || !tglPergi) {
+            alert('Mohon lengkapi data kontak pemesan, rute, dan tanggal pergi!');
             return;
         }
 
@@ -205,7 +218,10 @@
         }
 
         const message = `Halo Kak Alin (@alineyzd), saya mau order jastip tiket KAI Expo 2026.%0A%0A` +
-            `*Kontak Pemesan:* ${hp}%0A%0A` +
+            `*Detail Pemesan:*%0A` +
+            `- Nama: ${namaPemesan}%0A` +
+            `- No WA: ${hp}%0A` +
+            `- Email: ${email}%0A%0A` +
             pesanPerjalanan +
             `*Request Posisi Kursi:* ${requestSeat}%0A%0A` +
             `*Data Penumpang:*%0A${dataPenumpang}%0A` +
