@@ -24,27 +24,9 @@
             border-radius: 8px;
             color: #ffffff;
         }
-        .header h1 { 
-            font-size: 1.4rem; 
-            color: #ffffff; 
-            text-transform: uppercase; 
-            font-weight: 800; 
-            letter-spacing: 0.5px;
-        }
-        .header p { 
-            color: #FFD1A6; 
-            font-size: 0.95rem; 
-            margin-top: 6px; 
-            font-weight: 600;
-        }
-        .section-title { 
-            font-weight: 700; 
-            font-size: 1.05rem; 
-            color: #1F4E9D; 
-            margin: 25px 0 12px; 
-            border-bottom: 2px solid #F47A20; 
-            padding-bottom: 5px; 
-        }
+        .header h1 { font-size: 1.4rem; color: #ffffff; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; }
+        .header p { color: #FFD1A6; font-size: 0.95rem; margin-top: 6px; font-weight: 600; }
+        .section-title { font-weight: 700; font-size: 1.05rem; color: #1F4E9D; margin: 25px 0 12px; border-bottom: 2px solid #F47A20; padding-bottom: 5px; }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 0.88rem; color: #333; }
         input, select, textarea { 
@@ -56,20 +38,8 @@
             background-color: #fbfbfb;
             transition: all 0.2s ease;
         }
-        input:focus, select:focus, textarea:focus { 
-            outline: none; 
-            border-color: #1F4E9D; 
-            background-color: #ffffff;
-            box-shadow: 0 0 5px rgba(31, 78, 157, 0.3);
-        }
-        .passenger-box { 
-            background: #f7f9fc; 
-            padding: 14px; 
-            border: 1px solid #dce4ed; 
-            border-left: 4px solid #1F4E9D;
-            border-radius: 6px; 
-            margin-bottom: 12px; 
-        }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #1F4E9D; background-color: #ffffff; box-shadow: 0 0 5px rgba(31, 78, 157, 0.3); }
+        .passenger-box { background: #f7f9fc; padding: 14px; border: 1px solid #dce4ed; border-left: 4px solid #1F4E9D; border-radius: 6px; margin-bottom: 12px; }
         .passenger-box h4 { font-size: 0.9rem; margin-bottom: 8px; color: #1F4E9D; font-weight: 700; }
         .row { display: flex; gap: 10px; }
         .row .form-group { flex: 1; }
@@ -87,19 +57,9 @@
             transition: transform 0.1s ease, background 0.3s;
             box-shadow: 0 4px 10px rgba(244, 122, 32, 0.3);
         }
-        button:hover { 
-            background: linear-gradient(135deg, #e06915 0%, #bf5206 100%);
-        }
-        button:active {
-            transform: scale(0.99);
-        }
-        .note-text {
-            color: #d9534f;
-            font-size: 0.78rem;
-            margin-top: 4px;
-            display: block;
-            font-style: italic;
-        }
+        button:hover { background: linear-gradient(135deg, #e06915 0%, #bf5206 100%); }
+        button:disabled { background: #ccc; cursor: not-allowed; box-shadow: none; }
+        .note-text { color: #d9534f; font-size: 0.78rem; margin-top: 4px; display: block; font-style: italic; }
     </style>
 </head>
 <body>
@@ -114,23 +74,23 @@
         <div class="section-title">1. Kontak Pemesan Utama</div>
         <div class="form-group">
             <label for="namaPemesan">Nama Pemesan Utama:</label>
-            <input type="text" id="namaPemesan" placeholder="Contoh: Alin" required>
+            <input type="text" id="namaPemesan" name="namaPemesan" placeholder="Contoh: Alin" required>
         </div>
         <div class="row">
             <div class="form-group">
                 <label for="hp">No. WhatsApp (Aktif):</label>
-                <input type="tel" id="hp" placeholder="Contoh: 08123456789" required>
+                <input type="tel" id="hp" name="hp" placeholder="Contoh: 08123456789" required>
             </div>
             <div class="form-group">
                 <label for="email">Alamat Email:</label>
-                <input type="email" id="email" placeholder="contoh@gmail.com" required>
+                <input type="email" id="email" name="email" placeholder="contoh@gmail.com" required>
             </div>
         </div>
 
         <div class="section-title">2. Detail Perjalanan</div>
         <div class="form-group">
             <label for="jenisTipe">Tipe Perjalanan:</label>
-            <select id="jenisTipe" onchange="togglePP()">
+            <select id="jenisTipe" name="jenisTipe" onchange="togglePP()">
                 <option value="One Way">One Way (Sekali Jalan)</option>
                 <option value="Pulang Pergi (PP)">Pulang Pergi (PP)</option>
             </select>
@@ -139,22 +99,22 @@
         <div class="row">
             <div class="form-group">
                 <label for="stasiunAsal">Stasiun Asal:</label>
-                <input type="text" id="stasiunAsal" placeholder="Contoh: Gambir" required>
+                <input type="text" id="stasiunAsal" name="stasiunAsal" placeholder="Contoh: Gambir" required>
             </div>
             <div class="form-group">
                 <label for="stasiunTujuan">Stasiun Akhir / Tujuan:</label>
-                <input type="text" id="stasiunTujuan" placeholder="Contoh: Surabaya Pasarturi" required>
+                <input type="text" id="stasiunTujuan" name="stasiunTujuan" placeholder="Contoh: Surabaya Pasarturi" required>
             </div>
         </div>
 
         <div class="row">
             <div class="form-group">
                 <label for="keretaPergi">Nama Kereta (Pergi):</label>
-                <input type="text" id="keretaPergi" placeholder="Contoh: Argo Bromo Anggrek" required>
+                <input type="text" id="keretaPergi" name="keretaPergi" placeholder="Contoh: Argo Bromo Anggrek" required>
             </div>
             <div class="form-group">
                 <label for="kelasPergi">Kelas Kereta (Pergi):</label>
-                <select id="kelasPergi" required>
+                <select id="kelasPergi" name="kelasPergi" required>
                     <option value="Ekonomi">Ekonomi</option>
                     <option value="Eksekutif">Eksekutif</option>
                     <option value="Panoramic">Panoramic</option>
@@ -164,11 +124,11 @@
         <div class="row">
             <div class="form-group">
                 <label for="tglPergi">Tanggal Keberangkatan:</label>
-                <input type="date" id="tglPergi" required>
+                <input type="date" id="tglPergi" name="tglPergi" required>
             </div>
             <div class="form-group">
                 <label for="jamPergi">Jam Keberangkatan (Pergi):</label>
-                <input type="text" id="jamPergi" placeholder="Contoh: 08:20 / Pagi" required>
+                <input type="text" id="jamPergi" name="jamPergi" placeholder="Contoh: 08:20 / Pagi" required>
             </div>
         </div>
 
@@ -177,11 +137,11 @@
             <div class="row">
                 <div class="form-group">
                     <label for="keretaPulang">Nama Kereta (Pulang):</label>
-                    <input type="text" id="keretaPulang" placeholder="Contoh: Sembrani">
+                    <input type="text" id="keretaPulang" name="keretaPulang" placeholder="Contoh: Sembrani">
                 </div>
                 <div class="form-group">
                     <label for="kelasPulang">Kelas Kereta (Pulang):</label>
-                    <select id="kelasPulang">
+                    <select id="kelasPulang" name="kelasPulang">
                         <option value="Ekonomi">Ekonomi</option>
                         <option value="Eksekutif">Eksekutif</option>
                         <option value="Panoramic">Panoramic</option>
@@ -191,18 +151,18 @@
             <div class="row">
                 <div class="form-group">
                     <label for="tglPulang">Tanggal Kepulangan:</label>
-                    <input type="date" id="tglPulang">
+                    <input type="date" id="tglPulang" name="tglPulang">
                 </div>
                 <div class="form-group">
                     <label for="jamPulang">Jam Keberangkatan (Pulang):</label>
-                    <input type="text" id="jamPulang" placeholder="Contoh: 19:30 / Malam">
+                    <input type="text" id="jamPulang" name="jamPulang" placeholder="Contoh: 19:30 / Malam">
                 </div>
             </div>
         </div>
 
         <div class="form-group" style="margin-top: 15px;">
             <label for="requestSeat">Request Posisi Kursi (Pilih Salah Satu):</label>
-            <select id="requestSeat">
+            <select id="requestSeat" name="requestSeat">
                 <option value="Bebas / Random">Bebas / Bebas Mana Saja</option>
                 <option value="Kursi A (Samping Jendela)">Kursi A (Samping Jendela)</option>
                 <option value="Kursi B (Samping Lorong / Tengah)">Kursi B</option>
@@ -265,7 +225,7 @@
         <div class="section-title">4. Metode Pembayaran & Catatan</div>
         <div class="form-group">
             <label for="metodeBayar">Pilih Metode Pembayaran:</label>
-            <select id="metodeBayar" required>
+            <select id="metodeBayar" name="metodeBayar" required>
                 <option value="Transfer BCA">Transfer BCA</option>
                 <option value="Transfer Mandiri">Transfer Mandiri</option>
                 <option value="Transfer BRI">Transfer BRI</option>
@@ -277,45 +237,41 @@
 
         <div class="form-group">
             <label for="catatan">Catatan / Opsi Kereta Cadangan:</label>
-            <textarea id="catatan" rows="3" placeholder="Contoh: Jika jam pagi habis, boleh diganti ke jam sore."></textarea>
+            <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: Jika jam pagi habis, boleh diganti ke jam sore."></textarea>
         </div>
 
-        <button type="button" onclick="sendToWhatsapp()">Kirim Form via WhatsApp</button>
+        <button type="button" id="submitBtn" onclick="handleSubmit()">Kirim Form via WhatsApp</button>
     </form>
 </div>
 
 <script>
+    // MASUKKAN URL GOOGLE APPS SCRIPT KAMU DI SINI
+    const scriptURL = 'PASTE_WEB_APP_URL_KAMU_DI_SINI';
+
     function togglePP() {
         const tipe = document.getElementById('jenisTipe').value;
         const secPulang = document.getElementById('sectionPulang');
-        if (tipe === 'Pulang Pergi (PP)') {
-            secPulang.style.display = 'block';
-        } else {
-            secPulang.style.display = 'none';
-        }
+        secPulang.style.display = (tipe === 'Pulang Pergi (PP)') ? 'block' : 'none';
     }
 
-    function sendToWhatsapp() {
+    async function handleSubmit() {
+        const btn = document.getElementById('submitBtn');
         const adminWa = "6285134519443";
         
         const namaPemesan = document.getElementById('namaPemesan').value.trim();
         const hp = document.getElementById('hp').value.trim();
         const email = document.getElementById('email').value.trim();
         const tipe = document.getElementById('jenisTipe').value;
-        
         const stasiunAsal = document.getElementById('stasiunAsal').value.trim();
         const stasiunTujuan = document.getElementById('stasiunTujuan').value.trim();
-        
         const keretaPergi = document.getElementById('keretaPergi').value.trim();
         const kelasPergi = document.getElementById('kelasPergi').value;
         const tglPergi = document.getElementById('tglPergi').value.trim();
         const jamPergi = document.getElementById('jamPergi').value.trim();
-        
         const keretaPulang = document.getElementById('keretaPulang').value.trim();
         const kelasPulang = document.getElementById('kelasPulang').value;
         const tglPulang = document.getElementById('tglPulang').value.trim();
         const jamPulang = document.getElementById('jamPulang').value.trim();
-        
         const requestSeat = document.getElementById('requestSeat').value;
         const metodeBayar = document.getElementById('metodeBayar').value;
         const catatan = document.getElementById('catatan').value.trim();
@@ -325,20 +281,55 @@
             return;
         }
 
-        let dataPenumpang = '';
+        let dataPenumpangTeks = '';
+        let dataPenumpangList = [];
         for (let i = 1; i <= 4; i++) {
             const nama = document.getElementById(`nama${i}`).value.trim();
             const nik = document.getElementById(`nik${i}`).value.trim();
             if (nama && nik) {
-                dataPenumpang += `- Penumpang ${i}: ${nama} (${nik})%0A`;
+                dataPenumpangTeks += `- Penumpang ${i}: ${nama} (${nik})%0A`;
+                dataPenumpangList.push(`P${i}: ${nama} (${nik})`);
             }
         }
 
-        if (dataPenumpang === '') {
+        if (dataPenumpangList.length === 0) {
             alert('Mohon isi minimal Data Penumpang 1!');
             return;
         }
 
+        btn.disabled = true;
+        btn.innerText = "Menyimpan & Membuka WA...";
+
+        // Kirim data ke Google Sheets
+        const formData = new FormData();
+        formData.append('namaPemesan', namaPemesan);
+        formData.append('hp', hp);
+        formData.append('email', email);
+        formData.append('jenisTipe', tipe);
+        formData.append('stasiunAsal', stasiunAsal);
+        formData.append('stasiunTujuan', stasiunTujuan);
+        formData.append('keretaPergi', keretaPergi);
+        formData.append('kelasPergi', kelasPergi);
+        formData.append('tglPergi', tglPergi);
+        formData.append('jamPergi', jamPergi);
+        formData.append('keretaPulang', keretaPulang);
+        formData.append('kelasPulang', kelasPulang);
+        formData.append('tglPulang', tglPulang);
+        formData.append('jamPulang', jamPulang);
+        formData.append('requestSeat', requestSeat);
+        formData.append('dataPenumpang', dataPenumpangList.join(' | '));
+        formData.append('metodeBayar', metodeBayar);
+        formData.append('catatan', catatan);
+
+        try {
+            if (scriptURL && scriptURL !== 'https://script.google.com/macros/s/AKfycbzqU50w7YJZjpZQMyaKtYRMMU4vu3YkYhStHhSfDQkhYtnrNwPGBh--wOsLpFr8edYT/exec') {
+                await fetch(scriptURL, { method: 'POST', body: formData });
+            }
+        } catch (error) {
+            console.error('Error saat menyimpan ke Sheets:', error);
+        }
+
+        // Redirect ke WhatsApp
         let pesanPerjalanan = `*Tipe Perjalanan:* ${tipe}%0A` +
             `*Rute:* ${stasiunAsal} ➡️ ${stasiunTujuan}%0A%0A` +
             `*Detail Pergi:*%0A` +
@@ -361,11 +352,12 @@
             pesanPerjalanan + `%0A` +
             `*Request Posisi Kursi:* ${requestSeat}%0A` +
             `*Metode Pembayaran:* ${metodeBayar}%0A%0A` +
-            `*Data Penumpang:*%0A${dataPenumpang}%0A` +
+            `*Data Penumpang:*%0A${dataPenumpangTeks}%0A` +
             `*Catatan Cadangan:* ${catatan || '-'}`;
 
-        const whatsappUrl = `https://wa.me/${adminWa}?text=${message}`;
-        window.open(whatsappUrl, '_blank');
+        btn.disabled = false;
+        btn.innerText = "Kirim Form via WhatsApp";
+        window.open(`https://wa.me/${adminWa}?text=${message}`, '_blank');
     }
 </script>
 
