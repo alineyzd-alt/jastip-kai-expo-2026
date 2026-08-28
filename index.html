@@ -245,8 +245,7 @@
 </div>
 
 <script>
-    // MASUKKAN URL GOOGLE APPS SCRIPT KAMU DI SINI
-    const scriptURL = 'PASTE_WEB_APP_URL_KAMU_DI_SINI';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzqU50w7YJZjpZQMyaKtYRMMU4vu3YkYhStHhSfDQkhYtnrNwPGBh--wOsLpFr8edYT/exec';
 
     function togglePP() {
         const tipe = document.getElementById('jenisTipe').value;
@@ -322,7 +321,7 @@
         formData.append('catatan', catatan);
 
         try {
-            if (scriptURL && scriptURL !== 'https://script.google.com/macros/s/AKfycbzqU50w7YJZjpZQMyaKtYRMMU4vu3YkYhStHhSfDQkhYtnrNwPGBh--wOsLpFr8edYT/exec') {
+            if (scriptURL) {
                 await fetch(scriptURL, { method: 'POST', body: formData });
             }
         } catch (error) {
